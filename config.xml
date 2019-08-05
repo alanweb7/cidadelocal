@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="br.com.kscode.app360" version="19.0.29" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>KSCODE</name>
-    <description>An awesome Ionic/Cordova app.</description>
-    <author email="contato@kscode.com.br" href="http://spottec.com.br/">SPOTTEC</author>
+<widget id="br.com.pertodeti.app360" version="19.0.29" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Veja Local - Guia Comercial</name>
+    <description>Tudo ao alcance das mãos.</description>
+    <author email="contato@vejalocal.com.br" href="http://vejalocal.com.br/">Veja Local</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
@@ -114,9 +114,9 @@
     <plugin name="cordova-plugin-browsertab" spec="^0.2.0" />
     <plugin name="cordova-plugin-x-socialsharing" spec="^5.4.3" />
     <plugin name="ionic-plugin-deeplinks" spec="^1.0.17">
-        <variable name="URL_SCHEME" value="kscode" />
+        <variable name="URL_SCHEME" value="vejalocal" />
         <variable name="DEEPLINK_SCHEME" value="https" />
-        <variable name="DEEPLINK_HOST" value="kscode.com.br" />
+        <variable name="DEEPLINK_HOST" value="vejalocal.com.br" />
         <variable name="ANDROID_PATH_PREFIX" value="/" />
     </plugin>
     <plugin name="cordova-plugin-geolocation" spec="^4.0.1">

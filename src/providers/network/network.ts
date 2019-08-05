@@ -55,7 +55,7 @@ export class NetworkProvider {
 
       public verifyConn(){
 
-        let url = 'https://kscode.com.br/ksc_2020/wp-json/admin/v1/app/check-serv';
+        let url = 'https://vejalocal.com.br/api19/wp-json/admin/v1/app/check-serv';
         let checkConn = this.http.get(url, {}, {}).then().catch((data)=>{
             return data;
         });

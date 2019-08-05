@@ -620,7 +620,7 @@ ion-icon {
 }
 
 ion-loading {
-    background: url(../assets/imgs/kscode_black_no_bckg.png);
+    background: url(../assets/imgs/vejalocal_black_no_bckg.png);
     background-size: cover;
     ion-backdrop {
         background-color: #fff;
@@ -640,7 +640,7 @@ ion-loading {
             height: 100px;
             -webkit-animation: sk-bounce2 1.0s infinite ease-in-out;
             animation: sk-bounce2 1.0s infinite ease-in-out;
-            mask-image: url(../assets/imgs/kscode_black_no_bckg.png);
+            mask-image: url(../assets/imgs/vejalocal_black_no_bckg.png);
             mask-size: contain;
             mask-position: 50% 50%;
             width: 100px;
@@ -679,7 +679,7 @@ ion-loading.loadingInterna {
     height: 100vh;
     position: fixed;
     padding: 10px;
-    background: url(../assets/imgs/kscode_black_no_bckg.png);
+    background: url(../assets/imgs/vejalocal_black_no_bckg.png);
     background-size: cover;
     z-index: 999;
     top: 0;

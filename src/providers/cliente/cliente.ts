@@ -6,13 +6,13 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class ClienteProvider {
   //CHAMADA DA URL PRINCIPAL DA API
-  private API_URL = 'https://kscode.com.br/ksc_2020/wp-json/admin/v1/users/login/'
-  private CLIENTE_URL ='https://kscode.com.br/ksc_2020/wp-json/admin/v1/users/codes?'
-  private CUPOM_URL = 'https://kscode.com.br/ksc_2020/wp-json/admin/v1/users/cupom'
+  private API_URL = 'https://vejalocal.com.br/api19/wp-json/admin/v1/users/login/'
+  private CLIENTE_URL ='https://vejalocal.com.br/api19/wp-json/admin/v1/users/codes?'
+  private CUPOM_URL = 'https://vejalocal.com.br/api19/wp-json/admin/v1/users/cupom'
   constructor(public http: Http) {
-    
+
   }
-    
+
 UpdateAccount(first_name:String,last_name:String,avatar:String,user_email:String,nome_empresa:String,segmento_empresa:String,user_cep:String,estado_empresa:String,cidade_empresa:String,token:String,lang:String) : Observable<any[]>{
      var data = {
         first_name        : first_name,
@@ -29,11 +29,11 @@ UpdateAccount(first_name:String,last_name:String,avatar:String,user_email:String
         lang              :lang
      };
       return this.http.post(this.CLIENTE_URL, data).map((resp:Response)=> resp.json());
-  
+
 }
  setPicture(picture :any,id:String) : Observable<any[]>{
     var data = {
-         id :id, 
+         id :id,
          picture  : picture
        };
     return this.http.post(this.API_URL + 'clients/picture', data).map((resp:Response)=> resp.json())
@@ -48,11 +48,11 @@ login(username: String, password: String,lang:String) : Observable<any[]>{
   }
     getinfConta(token:String):Observable<any[]>{
       let url = this.CLIENTE_URL+'token='+token+'&bloco=9';
-      return this.http.get(url).map((resp:Response)=> resp.json());  
+      return this.http.get(url).map((resp:Response)=> resp.json());
  }
 
  getSegmento():Observable<any[]>{
-  let url = 'https://kscode.com.br/ksc_2020/wp-json/admin/v1/users/codes?segments=all';
+  let url = 'https://vejalocal.com.br/api19/wp-json/admin/v1/users/codes?segments=all';
   return this.http.get(url).map((resp:Response)=> resp.json());
  }
  forgotpass(email: String) : Observable<any[]>{
@@ -64,12 +64,12 @@ login(username: String, password: String,lang:String) : Observable<any[]>{
    /////cupom
    getCupom(token:String){
     let url =  this.CUPOM_URL+"?token="+token;
-    return this.http.get(url).map((resp:Response)=> resp.json());  
+    return this.http.get(url).map((resp:Response)=> resp.json());
 
    }
    getCupom_Date(token:String,data_init:String,data_fim:String){
     let url =  this.CUPOM_URL+"?data1="+data_init+"&data2="+data_fim+"&info=userby&token="+token;
-    return this.http.get(url).map((resp:Response)=> resp.json());  
+    return this.http.get(url).map((resp:Response)=> resp.json());
 
    }
    setConta(lang:String,token:String,action:String,banco:String,tp_conta:String,agencia:String,n_conta:String,titular:String,cpf:String){

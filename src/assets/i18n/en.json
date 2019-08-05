@@ -4,7 +4,7 @@
 		"button" 	    : "Access",
 		"pesquisa"      : "search",
 		"adquira"       : "get your code",
-		"code_existe"   :"KSCODE does not exist!"
+		"code_existe"   :"CL does not exist!"
 
 	},
 	"menu":{
@@ -123,9 +123,9 @@
 		"msg":"You have reached the amount of uploads of images available in the package",
 		"arq_selecione":"Select an image before sending"
    },
-   
+
    "cupom":{
-	"title":"Win with KSCODE",
+	"title":"Win with CL",
 	"texto":"Enter a company to be a partner and win.",
 	"frase":"Share your coupon",
 	"compartilhe":"Share"
@@ -150,7 +150,7 @@
 		"page":"Bonus",
 		"texto_1":"Enter your bank account details to receive the values.",
 		"texto_2":"The account you enter must be in your name."
-		
+
 
    },
    "default":{
@@ -172,7 +172,7 @@
 	"btn_continuar":"Continue",
 	"btn_ircode":"Go to CODE",
 	"btn_fechar" : "Close",
-	
+
 	"btn_excluir" : "Delete",
 	"excluir_msg" :"successfully deleted",
 	"msg_erro"   :"an unexpected error occurred",
@@ -192,7 +192,7 @@
 	"pesquisa":"Your search returned no results.",
 	"msg_code":"Do you want to visit this code ?",
 	"msg_link":"Do you want to visit this link?"
-	
+
 }
 
 

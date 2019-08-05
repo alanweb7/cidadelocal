@@ -29,25 +29,25 @@ export class CupomPage {
   sobrenome : any;
   not    : Number;
   constructor( private socialSharing: SocialSharing ,
-               public navCtrl: NavController, 
-               private nativeStorage     : NativeStorage, 
-               public navParams: NavParams, 
+               public navCtrl: NavController,
+               private nativeStorage     : NativeStorage,
+               public navParams: NavParams,
                public modalCtrl: ModalController) {
   }
-  
+
   voltar() {
     this.navCtrl.setRoot(HomePage);
   }
-  
+
   cupomModal() {
     let myModal = this.modalCtrl.create('CupomModalPage');
     myModal.present();
   }
   regularShare(){
-    var msg  = "Inscreva-se usando este link:https://kscode.com.br/checkout/?add-to-cart=1351?promo_code="+this.cupom;
+    var msg  = "Inscreva-se usando este link:https://vejalocal.com.br/checkout/?add-to-cart=1351?promo_code="+this.cupom;
      this.socialSharing.share(msg, null, null);
    }
-   
+
   ionViewDidLoad() {
     this.cupom        = this.navParams.get('cupom');
     this.token        = this.navParams.get('token');
@@ -60,8 +60,8 @@ export class CupomPage {
     this.sobrenome    = this.navParams.get('sobrenome');
     console.log('ionViewDidLoad CupomPage');
   }
-  
-  
+
+
 
 
 }

@@ -4,7 +4,7 @@
 		"button" 	    : "acceso",
 		"pesquisa"      : "búsqueda",
 		"adquira"       : "adquiere su code ",
-		"code_existe"   : "KSCODE does not exist!"
+		"code_existe"   : "CL does not exist!"
 
 	},
 	"menu":{
@@ -123,7 +123,7 @@
 		"arq_selecione":"Seleccione una imagen antes de enviar"
    },
    "cupom":{
-	"title":"Gane con el KSCODE",
+	"title":"Gane con el CL",
 	"texto":"Indicar una empresa para ser socio y ganar.",
 	"frase":"Comparta su cupón",
 	"compartilhe":"cuota"
@@ -148,10 +148,10 @@
 		"page":"prima",
 		"texto_1":"Informe los datos de su cuenta bancaria para poder recibir los valores.",
 		"texto_2":"La cuenta informada debe estar obligatoriamente en su nombre."
-		
+
 
    },
-   
+
    "default":{
 	"page_doc":"Documentos",
 	"page_fav":"HISTORIA DE Codes",
@@ -190,7 +190,7 @@
 	"pesquisa":"Su búsqueda no ha devuelto resultados.",
 	"msg_code":"¿Desea visitar este código?",
 	"msg_link":"¿Desea visitar este enlace?"
-    
+
 }
 
 }

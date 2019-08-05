@@ -9,11 +9,11 @@ import 'rxjs/add/operator/switchMap';
 @Injectable()
 export class CodeProvider {
   public myGlobalVar: string;
-  private API_URL = 'https://kscode.com.br/ksc_2020/wp-json/code/search/'
-  private API_IMG_URL = 'https://kscode.com.br/ksc_2019/wp-content/uploads/formidable/'
-  private APP_URL = 'https://kscode.com.br/ksc_2020/wp-json/code/search/?code_number=pesquisa777'
-  private APP_URL_CODE ='https://kscode.com.br/ksc_2020/wp-json/admin/v1/users/codes'
-  private APP_URL_ENQ  = 'https://kscode.com.br/ksc_2020/wp-json/admin/v1/ask'
+  private API_URL = 'https://vejalocal.com.br/api19/wp-json/code/search/'
+  private API_IMG_URL = 'https://vejalocal.com.br/api19/wp-content/uploads/formidable/'
+  private APP_URL = 'https://vejalocal.com.br/api19/wp-json/code/search/?code_number=pesquisa777'
+  private APP_URL_CODE ='https://vejalocal.com.br/api19/wp-json/admin/v1/users/codes'
+  private APP_URL_ENQ  = 'https://vejalocal.com.br/api19/wp-json/admin/v1/ask'
 
 
   constructor(
@@ -269,7 +269,7 @@ getLinks(page:any): Observable<any>{
 
         }
         console.log(data);
-      let url = 'https://kscode.com.br/ksc_2020/wp-json/admin/v1/dashboard/';
+      let url = 'https://vejalocal.com.br/api19/wp-json/admin/v1/dashboard/';
       return this.http.post(url,data).map((resp:Response)=> resp.json());
   }
 
@@ -362,7 +362,7 @@ getLinks(page:any): Observable<any>{
 
   searchEntries(term): Observable<any[]>{
 
-    let url = 'https://kscode.com.br/ksc_2020/wp-json/code/search/?search=search&code_number='+term;
+    let url = 'https://vejalocal.com.br/api19/wp-json/code/search/?search=search&code_number='+term;
     return this.http.get(url).map((resp:Response)=> resp.json());
   }
 }

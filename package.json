@@ -1,8 +1,8 @@
 {
-  "name": "KSCODE",
+  "name": "veja_local",
   "version": "19.0.35",
-  "author": "SPOTTEC",
-  "homepage": "http://spottec.com.br/",
+  "author": "VEJA_LOCAL",
+  "homepage": "http://vejalocal.com.br/",
   "private": true,
   "scripts": {
     "start": "ionic-app-scripts serve",
@@ -118,9 +118,9 @@
       "cordova-plugin-browsertab": {},
       "cordova-plugin-x-socialsharing": {},
       "ionic-plugin-deeplinks": {
-        "URL_SCHEME": "kscode",
+        "URL_SCHEME": "vejalocal",
         "DEEPLINK_SCHEME": "https",
-        "DEEPLINK_HOST": "kscode.com.br",
+        "DEEPLINK_HOST": "vejalocal.com.br",
         "ANDROID_PATH_PREFIX": "/"
       },
       "cordova-plugin-geolocation": {
@@ -154,8 +154,8 @@
       "call-number": {}
     },
     "platforms": [
-      "android",
-      "ios"
+      "ios",
+      "android"
     ]
   }
 }

@@ -511,7 +511,7 @@ video_delete(id_code){
 
   ///metodo de envio via FTP
   async getAccess(){
-    let url = 'https://kscode.com.br/ksc_2020/wp-json/admin/v1/users/codes';
+    let url = 'https://vejalocal.com.br/api19/wp-json/admin/v1/users/codes';
 
     let getData = {
       id: this.id_code,
@@ -655,7 +655,7 @@ video_delete(id_code){
       files:files
     }
     console.log('dados enviados em video_create_ftp: ', data);
-    let url = 'https://kscode.com.br/ksc_2020/wp-json/admin/v1/users/codes';
+    let url = 'https://vejalocal.com.br/api19/wp-json/admin/v1/users/codes';
 this.http.post(url, data, {})
 .then(data => {
   this.util.loading.dismissAll();

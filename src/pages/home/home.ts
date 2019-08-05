@@ -371,7 +371,7 @@ pushGeoinfo(){
   });
 }
 pushPageCode(){
-  this.navCtrl.push('DetalheCodePage', {liberado :false,origem:1,token:this.token,lang:this.language,  code: 'KSCODE',
+  this.navCtrl.push('DetalheCodePage', {liberado :false,origem:1,token:this.token,lang:this.language,  code: 'CL',
   latitude: this.endLat, longitude: this.endLong,
   telephone: this.global.myGlobalVar
   });
@@ -444,13 +444,13 @@ showCheckbox() {
 }
 // compartilhar social share
 shareSheetShare() {
-  this.socialSharing.share("KSCODE - Tudo se conecta aqui! ->", "Share subject", "", "https://play.google.com/store/apps/details?id=com.kcode360.kcode").then(() => {
+  this.socialSharing.share("VEJA LOCAL - Tudo ao alcance das suas mãos! ->", "Share subject", "", "https://play.google.com/store/apps/details?id=br.com.pertodeti.guiacomercial").then(() => {
 
   }).catch(() => {});
 }
 
 shopcode() {
-  var url = 'https://kscode.com.br/pacotes/';
+  var url = 'https://vejalocal.com.br/pacotes/';
    this.browserTab.isAvailable()
     .then(isAvailable => {
       if (isAvailable) {

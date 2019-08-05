@@ -470,7 +470,7 @@ private _initialiseTranslation() : void
   }
   // compartilhar social share
 shareSheetShare() {
-  this.socialSharing.share(this.visite_code+"->", "Share subject", this.card, "https://kscode.com.br/card?code="+this.slug).then(() => {
+  this.socialSharing.share(this.visite_code+"->", "Share subject", this.card, "https://vejalocal.com.br/card?code="+this.slug).then(() => {
     console.log("shareSheetShare: Success");
   }).catch(() => {
     console.error("shareSheetShare: failed");

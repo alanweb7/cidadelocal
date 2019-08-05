@@ -1,9 +1,9 @@
 {
-  "name": "KSCODE",
+  "name": "veja-local",
   "integrations": {
     "cordova": {}
   },
   "type": "ionic-angular",
   "pro_id": "1bd2a77b",
-  "id": "75eed98d"
+  "id": "bf857500"
 }

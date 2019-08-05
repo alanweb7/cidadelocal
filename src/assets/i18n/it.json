@@ -4,7 +4,7 @@
 		"button" 	    : "Accesso",
 		"pesquisa"      : "RICERCA",
 		"adquira"       : "PRENDI IL TUO CODE",
-		"code_existe"   : "KSCODE non esiste!"
+		"code_existe"   : "CL non esiste!"
 
 	},
 	"menu":{
@@ -36,7 +36,7 @@
 		"page" : "I miei codes",
 		"campo" :"Code di ricerca",
 		"code_privado":"Questo codice è privato"
-   }  
+   }
    ,
    "criar_code":{
 	   "texto" : "Scegli il tuo code",
@@ -125,7 +125,7 @@
    }
    ,
    "cupom":{
-	"title":"Vinci con KSCODE",
+	"title":"Vinci con CL",
 	"texto":"Inserisci una società per diventare partner e vinci.",
 	"frase":"Condividi il tuo coupon",
 	"compartilhe":"Condividi questo"
@@ -150,7 +150,7 @@
 		"page":"indennità",
 		"texto_1":"Inserisci i dettagli del tuo conto bancario per ricevere i valori.",
 		"texto_2":"L'account che inserisci deve essere nel tuo nome."
-		
+
 
    },
    "default":{
@@ -172,8 +172,8 @@
 	"btn_continuar":"Continuare",
 	"btn_ircode":"Vai al  CODE",
 	"btn_fechar" :"Vicino",
-	
-	
+
+
 	"btn_excluir" : "cancellare",
 	"excluir_msg" :"eliminato con successo",
 	"msg_erro"   :"si è verificato un errore imprevisto",
