@@ -42,6 +42,8 @@ import { FTP } from '@ionic-native/ftp';
 import { Media } from '@ionic-native/media';
 import { NativeAudio } from '@ionic-native/native-audio';
 
+import { AppVersion } from '@ionic-native/app-version';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -74,6 +76,7 @@ import { NativeAudio } from '@ionic-native/native-audio';
 
   ],
   providers: [
+    AppVersion,
     CallNumber,
     NativeAudio,
     Media,

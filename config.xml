@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="br.com.pertodeti.app360" version="19.0.29" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Veja Local - Guia Comercial</name>
+<widget id="br.com.cidadelocal" version="7.7.7" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Cidade Local - Guia Comercial</name>
     <description>Tudo ao alcance das mãos.</description>
-    <author email="contato@vejalocal.com.br" href="http://vejalocal.com.br/">Veja Local</author>
+    <author email="contato@cidadelocal.com.br" href="http://cidadelocal.com.br/">Cidade Local</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />

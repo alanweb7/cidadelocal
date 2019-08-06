@@ -239,6 +239,7 @@ export class MenuCodePage {
     this.package_videos   = this.navParams.get('package_videos');
     this.lang             = this.navParams.get('lang');
      console.log("img",this.lang);
+     console.log("Code recebido em menu-codes",this.id_code);
      this._translateLanguage();
   }
    //fazer o start do slide
@@ -392,7 +393,7 @@ private _initialiseTranslation() : void
 
   }
   showPromptPush(codeNumber) {
-    this.navCtrl.push('NotificacaoPushPage',{codeNumber:codeNumber,lang:this.lang,token:this.token,texto_push:this.texto_push,campo_1:this.campo_1,campo_2:this.campo_2,btn_enviar:this.btn_enviar,btn_cancelar:this.btn_cancelar,msg_servidor:this.msg_servidor,load_aguarde:this.load_aguarde,campo_obrigatorio:this.campo_obrigatorio});
+    this.navCtrl.push('NotificacaoPushPage',{codeNumber:codeNumber,id_code:this.id_code,lang:this.lang,token:this.token,texto_push:this.texto_push,campo_1:this.campo_1,campo_2:this.campo_2,btn_enviar:this.btn_enviar,btn_cancelar:this.btn_cancelar,msg_servidor:this.msg_servidor,load_aguarde:this.load_aguarde,campo_obrigatorio:this.campo_obrigatorio});
 
 }
 

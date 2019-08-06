@@ -1,83 +1,98 @@
-
 page-home {
-   
-    .fundo{
-        background: #000;
-        height: 100%;
-        width: 100%;
-        ion-card{
-           margin-top: 10%;
-          
-           background: #000;
-           ion-card-title{
-               color: #fff;
-               text-align: center;
-           }
-           ion-card-title{
-               font-size: 12px;
-           }
-            img{
-               display:block;width:40%;height:auto;margin-left:auto;margin-right:auto;
-            }
-        }
-       
-        button#button-white{
-           background: #fff;
-           color: black;   
-           margin-top: 5%;  
-       }
-      
-       .social-share{
-           text-align: center;
-           margin-top: 5%;
-       }
-       
-    }
-    .text-input {
-        text-align: center;
-        font-size: xx-large;
-        text-transform: uppercase;
-    }
-    .scroll-content {
-    padding-bottom: 0 !important;
-    margin-top: 38px;
-    margin-bottom: 56px;
-    text-transform: uppercase;
-    }
-    ion-footer {
-        left: 0;
-        bottom: 0;
-        position: fixed;
-        z-index: 10;
-        display: block;
-        width: 100%;
-        overflow: inherit;
-        height: 50px;
-        background: #000;
-        color: #fff;
-        .toolbar {
-            height: 55px;
-            min-height: 55px;
-           
-            .toolbar-background{
-                background: #000;
-            }
-        color: #fff;
-            font: bold;
-            text-align: center;
-        span{
-            color: #fff;
-            font: bold;
-            text-align: left;
-            font-size: 13px;
-        }
-        &.adquire-code{
-            text-align: center;
-            color:#fff;
-            font-size: 12px;
-            margin-top: 5%;
-        }
-      }
-    }
-   }
-   
+  .btn-cat {
+      width: 100%;
+      border: 1px solid;
+      border-radius: 7px;
+      height: 90px;
+      text-align: center;
+      background-color: peru;
+      background-image: linear-gradient(to bottom right, red, yellow);
+  }
+  .categorie-icon {
+      font-size: 3em;
+      top: 5px;
+      margin-top: 4px;
+      position: relative;
+      color: #ffffff;
+  }
+  .categorie-name {
+    top: 5px;
+    position: relative;
+  }
+  .title-header-categories h5 {
+    text-align: center;
+    font-size: x-large;
+    display: block;
+    background: #013063;
+    color: #fff;
+    width: 100%;
+    padding: 5px;
+    border-radius: 7px;
+}
+.toolbar-background-md {
+  background-image: url("../assets/imgs/header-app-home.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.toolbar-background-me {
+  background-image: url("./assets/imgs/header-app-home.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.toolbar-background-my {
+  background-image: url("../assets/imgs/header-app-home.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.toolbar-md {
+  padding: 4px;
+  min-height: 100px;
+}
+.toolbar-title-md {
+  color: #ffffff;
+}
+.item-input .label-md, .item-select .label-md, .item-datetime .label-md {
+  color: #999;
+  right: 10px;
+  position: absolute;
+  top: 0;
+}
+.button-round-md.search {
+  border-radius: 0 64px 64px 0;
+  padding: 0 2.6rem;
+}
+ion-input.fiel-search {
+  border: 1px solid;
+  float: right;
+  position: relative;
+  margin-right: -4px;
+  max-height: 39px;
+  top: 3px;
+  border-color: blue;
+  border-radius: 64px 0 0 64px;
+  padding-left: 15px;
+}
+.searchbar-home {
+  display: flex;
+}
+.item-md ion-thumbnail {
+  min-width: 80px;
+  min-height: 80px;
+  background-position: center center;
+  background-size: cover;
+  border-radius: 7px;
+}
+.actions-btn {
+  text-align: right !important;
+  width: 100%;
+}
+.list-ads-content {
+  width: 100%;
+  padding-top: 7px;
+}
+
+}

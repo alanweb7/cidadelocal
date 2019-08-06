@@ -257,7 +257,7 @@ getLinks(page:any): Observable<any>{
     return this.http.delete(url).map((resp:Response)=> resp.json());
   }
 
-  create_push(codeNumber:String,titulo:String,mensagem:String,token:String,lang:String): Observable<any>{
+  create_push(codeNumber:String,id_code,titulo:String,mensagem:String,token:String,lang:String): Observable<any>{
     console.log(codeNumber,titulo,mensagem,token);
         var data ={
           codeNumber : codeNumber,

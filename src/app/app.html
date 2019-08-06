@@ -19,26 +19,23 @@
         <ion-icon color="primary" name="home"></ion-icon> {{home}}
       </button>
       <button menuClose ion-item  (click)="openPage(2)">
-        <ion-icon color="primary" name="contact"></ion-icon> {{codes}}
+        <ion-icon color="primary" name="contact"></ion-icon> Minha Conta
       </button>
       <button menuClose ion-item  (click)="openPage(3)">
-        <ion-icon color="primary" name="star"></ion-icon> {{favoritos}}
-      </button>
-      <button menuClose ion-item (click)="openPage(4)">
-        <ion-icon color="primary" name="search"></ion-icon> {{pesquisa}}
+        <ion-icon color="primary" name="star"></ion-icon> Histórico de Acesso
       </button>
       <button menuClose ion-item (click)="openPage(5)"  *ngIf="cnpj">
           <ion-icon color="primary" name="filing"></ion-icon>  Relatórios Ganhos
       </button>
       <button menuClose ion-item (click)="openPage(6)"  *ngIf="cnpj">
         <ion-icon color="primary" name="cash"></ion-icon>Meu Cupom
-      </button> 
+      </button>
       <button menuClose ion-item  (click)="logout()" *ngIf="mostra">
         <ion-icon color="danger" class="sair" name="exit"></ion-icon>
         <span  color="danger" >{{sair}}</span>
       </button>
-    </ion-list> 
-   
+    </ion-list>
+
   </ion-content>
 
 </ion-menu>

@@ -25,6 +25,7 @@ export class NotificacaoPushPage {
   campo_2;
   texto_push;
   code             : any;
+  id_code: any;
   campo_obrigatorio;
   btn_cancelar;
   load_aguarde;
@@ -67,6 +68,7 @@ export class NotificacaoPushPage {
     this.texto_push     = this.navParams.get('texto_push');
     this.campo_obrigatorio     = this.navParams.get('campo_obrigatorio');
     this.code           = this.navParams.get('codeNumber');
+    this.id_code        = this.navParams.get('id_code');;
     this.lang           = this.navParams.get('lang');
     console.log(this.campo_1,this.campo_2);
   }
@@ -90,7 +92,8 @@ export class NotificacaoPushPage {
         else {
 
             this.util.showLoading(this.load_aguarde);
-            this.codeProvider.create_push(this.code,this.model.titulo,this.model.mensagem,this.token,this.lang)
+            console.log('Code na entrada da funcao: ', this.id_code);
+            this.codeProvider.create_push(this.code,this.id_code,this.model.titulo,this.model.mensagem,this.token,this.lang)
             .subscribe(
                   (result: any) =>{
                     this.util.loading.dismissAll();
@@ -100,7 +103,10 @@ export class NotificacaoPushPage {
                     } else if(result.status == 402){
                       this.toast.create({ message: result.message, position: 'botton', duration: 3000 ,closeButtonText: 'Ok!',cssClass: 'error'  }).present();
                       this.navCtrl.push('LoginPage',{lang:this.lang});
-
+                    } else if(result.status == 403){
+                      console.log('code recebido normal: ',this.id_code,' - Code retornado do servidor: ',this.id_code);
+                      this.toast.create({ message: result.message, position: 'botton', duration: 3000 ,closeButtonText: 'Ok!',cssClass: 'error'  }).present();
+                      this.navCtrl.push('MenuCodePage',{lang:this.lang, token:this.token, code:this.id_code});
                     }
                   },(error:any) => {
                     this.toast.create({ message:this.msg_servidor, position: 'botton', duration: 3000 ,closeButtonText: 'Ok!',cssClass: 'error'  }).present();

@@ -1,6 +1,8 @@
+import { AppVersion } from '@ionic-native/app-version';
+import { HTTP } from '@ionic-native/http';
 import { Network } from '@ionic-native/network';
 import { NetworkProvider } from '../../providers/network/network';
-import { Component } from '@angular/core';
+import { Component, Version } from '@angular/core';
 import { NavController, IonicPage, NavParams, Platform, Loading, LoadingController, Events, AlertController, ModalController, ToastController } from 'ionic-angular';
 //Import Native
 import { OneSignal } from '@ionic-native/onesignal';
@@ -26,6 +28,20 @@ import { UtilService } from '../../providers/util/util.service';
   templateUrl: 'home.html',
 })
 export class HomePage {
+// novas funcoes da home
+private categories: any;
+private currentStyles: any;
+private canSave: any;
+private hasError: any;
+private showed_cat: boolean;
+private showed_result: boolean;
+
+public todo:any = {};
+public ads:any;
+
+private cities: any;
+private baseUrl: string = 'https://vejalocal.com.br/api19';
+
   public signupform: FormGroup;
   codeNumber         : any;
   endLat             : any;
@@ -152,8 +168,23 @@ trans={
     public util           : UtilService,
     public toast          : ToastController,
     public networkProvider : NetworkProvider,
+    public http: HTTP,
+    private appVersion: AppVersion
 
   ) {
+
+    // novas funcoes da home
+    this.getAllCat();
+    this.cities = [
+      {
+        id: 10,
+        name: 'Ananindeua'
+      },
+      {
+        id: 19,
+        name: 'Belém'
+      }
+    ];
 
     // this.signupform = this.formBuilder.group({
     //   title: ['', Validators.required],
@@ -257,6 +288,115 @@ trans={
           this.footerIsHidden= true;
       });
 
+
+    }
+    // novas funcoes da home page
+    getAllCat(){
+      /**
+       * Sistema de retorno de informações diversas
+       * Param: mode (exemplo: getCats)
+       * Options: any info (ex: all, name, etc...)
+       */
+        let token = '39<(G+xI16HyoK8$IKh>xID.Db]<zX6T:3CEp';
+          let url = this.baseUrl+"/wp-json/admin/v1/conn/getinfo";
+          let data = {
+            id: '1',
+            mode: 'cats>citys>version',
+          };
+          let header = {Mytoken: 'Bearer '+ token};
+          this.http.get(url, data, header)
+        .then(data => {
+
+          // console.log(data.status);
+          // console.log(data.data); // data received by server
+          // console.log(data.headers);
+
+          let response = JSON.parse(data.data);
+          this.showed_cat = true;
+
+
+          console.log('Response: ',response);
+          this.categories = response.data.cats;
+          this.cities = response.data.citys.cidades;
+          //verificar a versao do app
+          if(response.data.version){
+            let lastVersion = response.data.version;
+            this.appVersion.getVersionNumber().then((Version)=>{
+              console.log(Version);
+              if(lastVersion > Version){
+                console.log('A versão da loja é maior');
+              }
+              if(lastVersion < Version){
+                console.log('A versão da loja é menor');
+              }
+              if(lastVersion !== Version){
+
+                this.updateApp();
+
+              }
+            });
+
+          }
+          this.cities = response.data.citys.cidades;
+          console.log('Lista de Categorias: ',this.categories);
+          console.log('Lista de Cidades: ',this.cities);
+
+        })
+        .catch(error => {
+
+          console.log('Acionou o catch!');
+          console.log(error.status);
+          console.log(error.error); // error message as string
+          console.log(error.headers);
+
+        });
+      }
+      openCategorie(){
+        alert('Seja o primeiro a anunciar aqui! Acesse vejalocal.com.br');
+      }
+      pushDetailPage(){
+        alert('Ir para o Anunciante');
+      }
+
+    search_ads(){
+
+      this.keyboard.hide();
+      this.util.showLoading('Aguarde...');
+      console.log(this.todo);
+      let term = this.todo.term;
+      let token = '39<(G+xI16HyoK8$IKh>xID.Db]<zX6T:3CEp';
+      let url = 'https://vejalocal.com.br/api19/wp-json/code/search/?search=search&code_number='+term;
+          let data = {
+            id: '1',
+            mode: 'cats>citys',
+          };
+          let header = {Mytoken: 'Bearer '+ token};
+          this.http.get(url, data, header)
+        .then(data => {
+
+          // console.log(data.status);
+          // console.log(data.data); // data received by server
+          // console.log(data.headers);
+
+          this.util.loading.dismissAll();
+          this.ads = JSON.parse(data.data);
+          this.showed_result = true;
+
+
+          console.log('Lista de Anunciantes: ',this.ads);
+
+        })
+        .catch(error => {
+
+          console.log('Acionou o catch!');
+          console.log(error.status);
+          console.log(error.error); // error message as string
+          console.log(error.headers);
+
+        });
+    }
+
+    openAds(){
 
     }
     update_cupom(){
@@ -638,5 +778,39 @@ openDeeplinks(){
       result.message = "Sem conexão com a internet."
       this.toast.create({ message: result.message, position: 'botton', duration: 14400 ,closeButtonText: 'Ok!', cssClass: 'error' }).present();
     }
+
+    updateApp() {
+      let alert = this.alertCtrl.create({
+        title: 'Nova atualição',
+        message: 'Para uma melhor experiência, mantenha o Cidade Local sempre atualizado',
+        buttons: [
+          {
+            text: 'Cancelar',
+            role: 'cancel',
+            handler: () => {
+              console.log('Cancel clicked');
+            }
+          },
+          {
+            text: 'Atualizar',
+            handler: () => {
+              let url = 'https://play.google.com/store/apps/details?id=br.com.pertodeti.guiacomercial';
+              this.openThisPage(url);
+            }
+          }
+        ]
+      });
+      alert.present();
+    }
+
+    openThisPage(url) {
+       this.browserTab.isAvailable()
+        .then(isAvailable => {
+          if (isAvailable) {
+            this.browserTab.openUrl(url);
+          }
+        });
+    }
+
 
 }
