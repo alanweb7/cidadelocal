@@ -1,15 +1,15 @@
 page-home {
   .btn-cat {
-      width: 100%;
+      width: 90%;
       border: 1px solid;
       border-radius: 7px;
-      height: 90px;
+      height: 75px;
       text-align: center;
-      background-color: peru;
-      background-image: linear-gradient(to bottom right, red, yellow);
+      // background-color: peru;
+      // background-image: linear-gradient(to bottom right, red, yellow);
   }
   .categorie-icon {
-      font-size: 3em;
+      // font-size: 3em;
       top: 5px;
       margin-top: 4px;
       position: relative;
@@ -93,6 +93,15 @@ ion-input.fiel-search {
 .list-ads-content {
   width: 100%;
   padding-top: 7px;
+}
+.thumbs-list{
+  background-position: center top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 7px;
+  width: 80px;
+  height: 70px;
+
 }
 
 }

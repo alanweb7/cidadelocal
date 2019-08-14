@@ -33,12 +33,12 @@
           </ion-list-header>
           <ion-list>
                   <ion-item *ngFor="let item of ads">
-                      <ion-thumbnail item-left class="thumbs-list" [ngStyle]="{'background-image': 'url(' + item.card + ')'}">
+                      <ion-thumbnail item-left class="thumbs-list" [ngStyle]="{'background-image': 'url(' + item.galeria[0].img_link + ')'}">
                       </ion-thumbnail>
                       <div class="list-ads-content">
                         <h2 item-title><strong>{{item.code | slice:0:40}}<span *ngIf="item.code.length > 40">...</span></strong></h2>
                         <p item-subtitle text-wrap >{{item.descricao | slice:0:48 }}<span *ngIf="item.descricao.length > 48">...</span></p>
-                        <div class="actions-btn"><button (click)="openAds()" class="clearfix-styles" ion-button round>Ver</button></div>
+                        <div class="actions-btn"><button (click)="openAds(item.code)" class="clearfix-styles" ion-button round>Ver</button></div>
                       </div>
                   </ion-item>
           </ion-list>
@@ -59,11 +59,18 @@
 
     <ion-grid>
       <ion-row>
-        <ion-col col-4 *ngFor="let cat of categories">
-            <div class="btn-cat" (click)="openCategorie()" [ngStyle]="{'background-color': cat.style.backgroundcolor }">
-                <ion-icon class="{{cat.icon.icon}} categorie-icon" [ngStyle]="{'color':cat.icon.style.color}"></ion-icon>
-                <div style="width: 97%" class="categorie-name">{{cat.id_nome | slice:0:20 }}<span *ngIf="cat.id_nome.length > 20" >...</span></div>
+        <ion-col col-4 *ngFor="let cat of show_part" style="text-align:center">
+            <div class="btn-cat" (click)="openCategorie(cat.id)" [ngStyle]="cat.style">
+                <ion-icon class="{{cat.icon.icon}} categorie-icon" [ngStyle]="cat.icon.style"></ion-icon>
             </div>
+            <div style="width: 97%; text-align: center" class="categorie-name">{{cat.id_nome | slice:0:20 }}<span *ngIf="cat.id_nome.length > 20" >...</span></div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <button ion-button full color="primary" (click)="showPart('categories')" [hidden]="hiddeButton">
+            VER TODAS AS CATEGORIAS
+          </button>
         </ion-col>
       </ion-row>
     </ion-grid>

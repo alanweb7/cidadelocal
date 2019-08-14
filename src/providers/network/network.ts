@@ -55,7 +55,7 @@ export class NetworkProvider {
 
       public verifyConn(){
 
-        let url = 'https://vejalocal.com.br/api19/wp-json/admin/v1/app/check-serv';
+        let url = 'https://cidadelocal.com.br/api19/wp-json/admin/v1/app/check-serv';
         let checkConn = this.http.get(url, {}, {}).then().catch((data)=>{
             return data;
         });

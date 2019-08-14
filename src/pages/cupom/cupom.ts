@@ -44,7 +44,7 @@ export class CupomPage {
     myModal.present();
   }
   regularShare(){
-    var msg  = "Inscreva-se usando este link:https://vejalocal.com.br/checkout/?add-to-cart=1351?promo_code="+this.cupom;
+    var msg  = "Inscreva-se usando este link:https://cidadelocal.com.br/checkout/?add-to-cart=1351?promo_code="+this.cupom;
      this.socialSharing.share(msg, null, null);
    }
 

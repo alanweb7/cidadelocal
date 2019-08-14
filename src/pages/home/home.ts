@@ -21,6 +21,7 @@ import { SqliteHelperService } from '../../providers/sqlite-helper/sqlite-helper
 import { ClienteProvider } from '../../providers/cliente/cliente';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { UtilService } from '../../providers/util/util.service';
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 @IonicPage({
   priority : 'high'
 })@Component({
@@ -30,17 +31,20 @@ import { UtilService } from '../../providers/util/util.service';
 export class HomePage {
 // novas funcoes da home
 private categories: any;
+private show_part: any;
+private topCategories: any;
 private currentStyles: any;
 private canSave: any;
 private hasError: any;
 private showed_cat: boolean;
 private showed_result: boolean;
+private hiddeButton: boolean = false;
 
 public todo:any = {};
 public ads:any;
 
 private cities: any;
-private baseUrl: string = 'https://vejalocal.com.br/api19';
+private baseUrl: string = 'https://cidadelocal.com.br/api19';
 
   public signupform: FormGroup;
   codeNumber         : any;
@@ -141,6 +145,8 @@ trans={
   texto: any;
   msg_code: any;
   statusConn:any;
+  home_Message;
+
   constructor(
     public loadingCtrl     : LoadingController,
     public navCtrl         : NavController,
@@ -175,6 +181,27 @@ trans={
 
     // novas funcoes da home
     this.getAllCat();
+
+    this.events.subscribe('my-message', (data) =>{
+      console.log(data); // 👋 Hello from page1!
+      this.home_Message =  data;
+      console.log('valor home message recebido em subscribe::', data);
+
+      if(!data){
+
+        console.log('this message: ',this.home_Message);
+        if(!this.home_Message){
+
+          console.log('home message está vazio');
+
+          this.events.publish('my-message','tem');
+
+        }
+
+      }
+    });
+
+
     this.cities = [
       {
         id: 10,
@@ -297,6 +324,7 @@ trans={
        * Param: mode (exemplo: getCats)
        * Options: any info (ex: all, name, etc...)
        */
+      this.util.showLoading('Carregando categorias...');
         let token = '39<(G+xI16HyoK8$IKh>xID.Db]<zX6T:3CEp';
           let url = this.baseUrl+"/wp-json/admin/v1/conn/getinfo";
           let data = {
@@ -311,12 +339,14 @@ trans={
           // console.log(data.data); // data received by server
           // console.log(data.headers);
 
+          this.util.loading.dismissAll();
           let response = JSON.parse(data.data);
           this.showed_cat = true;
 
-
           console.log('Response: ',response);
-          this.categories = response.data.cats;
+          this.categories = response.data.cats.categories;
+          this.show_part = response.data.cats.top_categories;
+          this.topCategories = response.data.cats.top_categories;
           this.cities = response.data.citys.cidades;
           //verificar a versao do app
           if(response.data.version){
@@ -344,6 +374,7 @@ trans={
         })
         .catch(error => {
 
+          this.util.loading.dismissAll();
           console.log('Acionou o catch!');
           console.log(error.status);
           console.log(error.error); // error message as string
@@ -351,21 +382,30 @@ trans={
 
         });
       }
-      openCategorie(){
-        alert('Seja o primeiro a anunciar aqui! Acesse vejalocal.com.br');
+      openCategorie(id){
+        console.log('ID da categoria buscada: ', id);
+        this.todo.cat = id;
+        this.search_ads();
       }
       pushDetailPage(){
         alert('Ir para o Anunciante');
       }
 
     search_ads(){
+      console.log('saerch ads ID da categoria recebida: ', this.todo.cat);
 
       this.keyboard.hide();
       this.util.showLoading('Aguarde...');
-      console.log(this.todo);
+      console.log('Informações do form (todo): ',this.todo);
       let term = this.todo.term;
+      let cat = this.todo.cat;
+      let city = this.todo.cat;
+      // if(this.todo.term !== ''){ term = this.todo.term; }else{}
+      // if(this.todo.cat !== ''){ cat = this.todo.cat;}
+      // if(this.todo.city !== ''){ city = this.todo.city;}
+
       let token = '39<(G+xI16HyoK8$IKh>xID.Db]<zX6T:3CEp';
-      let url = 'https://vejalocal.com.br/api19/wp-json/code/search/?search=search&code_number='+term;
+      let url = 'https://cidadelocal.com.br/api19/wp-json/code/search/?search=search&code_number='+term+'&cat='+ cat +'&city=' + city;
           let data = {
             id: '1',
             mode: 'cats>citys',
@@ -396,7 +436,9 @@ trans={
         });
     }
 
-    openAds(){
+    openAds(ads){
+
+      this.navCtrl.push('DetalheCodePage', {code:ads});
 
     }
     update_cupom(){
@@ -584,13 +626,13 @@ showCheckbox() {
 }
 // compartilhar social share
 shareSheetShare() {
-  this.socialSharing.share("VEJA LOCAL - Tudo ao alcance das suas mãos! ->", "Share subject", "", "https://play.google.com/store/apps/details?id=br.com.pertodeti.guiacomercial").then(() => {
+  this.socialSharing.share("CIDADE LOCAL - Tudo ao alcance das suas mãos! ->", "Share subject", "", "https://play.google.com/store/apps/details?id=br.com.cidadelocal").then(() => {
 
   }).catch(() => {});
 }
 
 shopcode() {
-  var url = 'https://vejalocal.com.br/pacotes/';
+  var url = 'https://cidadelocal.com.br/pacotes/';
    this.browserTab.isAvailable()
     .then(isAvailable => {
       if (isAvailable) {
@@ -810,6 +852,17 @@ openDeeplinks(){
             this.browserTab.openUrl(url);
           }
         });
+    }
+
+    goPage(){}
+    showPart(part){
+      // this.showAllCats = true;
+      switch(part){
+        case 'categories':
+          this.show_part = this.categories;
+          this.hiddeButton = true;
+        break;
+      }
     }
 
 

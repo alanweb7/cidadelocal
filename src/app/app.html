@@ -27,8 +27,8 @@
       <button menuClose ion-item (click)="openPage(5)"  *ngIf="cnpj">
           <ion-icon color="primary" name="filing"></ion-icon>  Relatórios Ganhos
       </button>
-      <button menuClose ion-item (click)="openPage(6)"  *ngIf="cnpj">
-        <ion-icon color="primary" name="cash"></ion-icon>Meu Cupom
+      <button menuClose ion-item (click)="openPage(7)"  *ngIf="id_serv == 41">
+        <ion-icon color="primary" name="cash"></ion-icon>Administrativo
       </button>
       <button menuClose ion-item  (click)="logout()" *ngIf="mostra">
         <ion-icon color="danger" class="sair" name="exit"></ion-icon>

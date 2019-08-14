@@ -138,7 +138,7 @@ export class MyApp {
 
     })
     this.event.subscribe("lang",(lang:any)=>{
-      console.log("lang",lang);
+      console.log("event subscribe app.component lang",lang);
       this.language =lang;
     });
     //capturar do evento da home
@@ -157,9 +157,6 @@ export class MyApp {
               console.log(data.cnpj);
               this.tp_pessoa = data.tp_pessoa;
               //this.language = data.lang;
-
-
-
          }else{
                this.mostra    = false;
                this.photo     = "";
@@ -259,10 +256,19 @@ redirectPush(notificationCode){
       this.nav.push("BonusPage",{token:this.token,lang:this.language,page_pesquisa:this.page_pesquisa, load_aguarde: this.load_aguarde,
         msg_servidor:this.msg_servidor});
     }
-    else if(page == 6){
-      this.nav.push("CupomPage",{token:this.token,page_pesquisa:this.page_pesquisa, load_aguarde: this.load_aguarde,
-        msg_servidor:this.msg_servidor,cupom:this.cnpj});
+    else if(page == 7){
+      let data = {
+        token:this.token,
+        id_serv:this.id_serv,
+        lang:this.language,
+        page_pesquisa:this.page_pesquisa,
+        load_aguarde: this.load_aguarde,
+        msg_servidor:this.msg_servidor
+      }
+
+      this.nav.push("PainelPage", data);
     }
+
 
   }
 

@@ -9,11 +9,12 @@ import 'rxjs/add/operator/switchMap';
 @Injectable()
 export class CodeProvider {
   public myGlobalVar: string;
-  private API_URL = 'https://vejalocal.com.br/api19/wp-json/code/search/'
-  private API_IMG_URL = 'https://vejalocal.com.br/api19/wp-content/uploads/formidable/'
-  private APP_URL = 'https://vejalocal.com.br/api19/wp-json/code/search/?code_number=pesquisa777'
-  private APP_URL_CODE ='https://vejalocal.com.br/api19/wp-json/admin/v1/users/codes'
-  private APP_URL_ENQ  = 'https://vejalocal.com.br/api19/wp-json/admin/v1/ask'
+  private API_URL = 'https://cidadelocal.com.br/api19/wp-json/code/search/';
+  private API_IMG_URL = 'https://cidadelocal.com.br/api19/wp-content/uploads/formidable/';
+  private APP_URL = 'https://cidadelocal.com.br/api19/wp-json/code/search/?code_number=pesquisa777';
+  private APP_URL_CODE ='https://cidadelocal.com.br/api19/wp-json/admin/v1/users/codes';
+  private APP_URL_ENQ  = 'https://cidadelocal.com.br/api19/wp-json/admin/v1/ask';
+  private baseUrl  = 'https://cidadelocal.com.br/api19';
 
 
   constructor(
@@ -269,7 +270,7 @@ getLinks(page:any): Observable<any>{
 
         }
         console.log(data);
-      let url = 'https://vejalocal.com.br/api19/wp-json/admin/v1/dashboard/';
+      let url = 'https://cidadelocal.com.br/api19/wp-json/admin/v1/dashboard/';
       return this.http.post(url,data).map((resp:Response)=> resp.json());
   }
 
@@ -362,7 +363,92 @@ getLinks(page:any): Observable<any>{
 
   searchEntries(term): Observable<any[]>{
 
-    let url = 'https://vejalocal.com.br/api19/wp-json/code/search/?search=search&code_number='+term;
+    let url = 'https://cidadelocal.com.br/api19/wp-json/code/search/?search=search&code_number='+term;
     return this.http.get(url).map((resp:Response)=> resp.json());
+  }
+
+  async getInfo(mode){
+          /**
+       * Sistema de retorno de informações diversas
+       * Param: mode (exemplo: getCats)
+       * Options: any info (ex: all, name, etc...)
+       */
+      let token = '39<(G+xI16HyoK8$IKh>xID.Db]<zX6T:3CEp';
+      let url = this.baseUrl+"/wp-json/admin/v1/conn/getinfo";
+      let data = {
+        id: '1',
+        mode: mode,
+        // mode: 'cats>citys>version',
+      };
+      let header = {Mytoken: 'Bearer '+ token};
+      let response = await this.httpn.get(url, data, header)
+    .then(data => {
+
+      let resp = JSON.parse(data.data);
+      console.log('Response: ',response);
+
+      return resp;
+
+    })
+    .catch(error => {
+
+      console.log('Acionou o catch!');
+      console.log(error.status);
+      console.log(error.error); // error message as string
+      console.log(error.headers);
+
+    });
+
+    return response;
+  }
+  //funcao multi uso
+  async setMultiData(data){
+
+    let url = data.url;
+    let token = data.token;
+
+              /**
+       * Sistema de retorno de informações diversas
+       * Param: mode (exemplo: getCats)
+       * Options: any info (ex: all, name, etc...)
+       */
+      if(!data.header){
+        data.header = {Auth: 'Bearer '+ token};
+      }
+
+      let header = data.header;
+      let httpMethod:any = '';
+
+      switch(data.method){
+        case 'post':
+            httpMethod = this.httpn.post(url, data.data, header);
+        break;
+        case 'get':
+            httpMethod = this.httpn.get(url, {}, header);
+        break;
+
+      }
+
+      let response = await httpMethod.then(data => {
+
+      let resp = JSON.parse(data.data);
+      console.log('Response: ',response);
+
+      return resp;
+
+    })
+    .catch(error => {
+
+      console.log('Acionou o catch!');
+      console.log(error.status);
+      console.log(error.error); // error message as string
+      console.log(error.headers);
+
+    });
+
+    return response;
+
+
+
   }
 }

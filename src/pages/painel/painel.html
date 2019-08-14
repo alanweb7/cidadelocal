@@ -1,0 +1,38 @@
+<!--
+  Generated template for the PainelPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Painel</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<div class="error_from_server" *ngIf="errorServer">{{error_from_server}}</div>
+<form [formGroup]="admForm" (ngSubmit)="setNewUser()">
+    <ion-item>
+      <ion-label>Usuário</ion-label>
+      <ion-input type="text"  name="user_name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Email</ion-label>
+      <ion-input type="text" formControlName="email" name="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Senha</ion-label>
+      <ion-input type="text" formControlName="password" name="password"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Pacote</ion-label>
+      <ion-input type="text"  name="package"></ion-input>
+    </ion-item>
+    <button ion-button type="submit" [disabled]="!admForm.valid">CADASTRAR</button>
+  </form>
+
+</ion-content>

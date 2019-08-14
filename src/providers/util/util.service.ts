@@ -12,7 +12,7 @@ import 'rxjs/add/operator/switchMap';
 @Injectable()
 export class UtilService {
   loading    : Loading;
-   APP_URL_PAIS ='https://vejalocal.com.br/api19/wp-json/admin/v1/users/codes?countries=all'
+   APP_URL_PAIS ='https://cidadelocal.com.br/api19/wp-json/admin/v1/users/codes?countries=all'
   constructor(public http: Http,
                public loadingCtrl    : LoadingController,
                private base64         : Base64,

@@ -10,6 +10,10 @@
     "build": "ionic-app-scripts build",
     "lint": "ionic-app-scripts lint"
   },
+  "config": {
+    "ionic_copy": "./config/copy.config.js",
+    "ionic_sass": "./config/sass.config.js"
+  },
   "dependencies": {
     "@angular/animations": "5.2.11",
     "@angular/common": "5.2.11",
@@ -93,6 +97,7 @@
     "device": "0.3.9",
     "es6-promise-plugin": "^4.2.2",
     "firebase": "^5.9.2",
+    "font-awesome": "^4.7.0",
     "ionic-angular": "3.9.2",
     "ionic-plugin-deeplinks": "^1.0.17",
     "ionicons": "3.0.0",

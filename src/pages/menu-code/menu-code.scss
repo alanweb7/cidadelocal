@@ -103,5 +103,17 @@ page-menu-code {
     div.panel-buttons{
       margin-top: 3%;
     }
+    .title_header_dominio{
+      width: 100%;
+      font-size: x-large;
+    }
+    ion-input.title_dominio{
+      font-size: x-large;
+      text-transform: uppercase;
+    }
+    .list_avatar{
+      width: 30px;
+      height: 30px;
+    }
 
    }

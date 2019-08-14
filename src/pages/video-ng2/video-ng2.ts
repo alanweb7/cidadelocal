@@ -5,7 +5,7 @@ import { FileUploader } from 'ng2-file-upload';
 import { Entry, FileEntry, File, IFile, FileError } from '@ionic-native/file';
 
 // const URL = '/api/';
-const URL = 'https://vejalocal.com.br/api19/wp-json/admin/v1/users/modelo?token=eyJ0eX';
+const URL = 'https://cidadelocal.com.br/api19/wp-json/admin/v1/users/modelo?token=eyJ0eX';
 
 @IonicPage()
 @Component({

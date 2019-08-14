@@ -26,11 +26,10 @@
           <ion-grid>
               <ion-row>
                   <ion-col >
-                      <p >{{texto}}</p>
-
+                      <p class="title_header_dominio">Escolha um Domínio</p>
                       <ion-list class="index-formularios">
                           <ion-item>
-                              <ion-input type="text" placeholder="Seu code" [(ngModel)]="modelC.name" formControlName="name"  value="{{code}}"></ion-input>
+                              <ion-input type="text" class="title_dominio" placeholder="Seu code" [(ngModel)]="modelC.name" formControlName="name"  value="{{code}}"></ion-input>
                           </ion-item>
                       </ion-list>
                   </ion-col>
@@ -91,6 +90,12 @@
           <ion-slide>
      <div class="panel-buttons">
 
+              <button ion-button (click)="ShowLocal()" block class="round-button" >
+                <div class="icon-button">
+                  <ion-icon slot="start" name="md-locate"></ion-icon>
+                </div>
+                Localidade & detalhes
+              </button>
               <button ion-button (click)="ShowCam()" block class="round-button" >
                 <div class="icon-button">
                   <ion-icon slot="start" name="camera"></ion-icon>

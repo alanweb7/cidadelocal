@@ -655,7 +655,7 @@ this.name="";
    }
    //metodo via ftp
    async getAccess(){
-      let url = 'https://vejalocal.com.br/api19/wp-json/admin/v1/users/codes';
+      let url = 'https://cidadelocal.com.br/api19/wp-json/admin/v1/users/codes';
 
       let getData = {
         id: this.id_code,
@@ -788,7 +788,7 @@ this.name="";
         files:files
       }
       console.log('dados enviados em video_create_ftp: ', data);
-      let url = 'https://vejalocal.com.br/api19/wp-json/admin/v1/users/codes';
+      let url = 'https://cidadelocal.com.br/api19/wp-json/admin/v1/users/codes';
   this.http.post(url, data, {})
   .then(data => {
     this.util.loading.dismissAll();

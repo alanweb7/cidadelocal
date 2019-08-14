@@ -6,9 +6,9 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class ClienteProvider {
   //CHAMADA DA URL PRINCIPAL DA API
-  private API_URL = 'https://vejalocal.com.br/api19/wp-json/admin/v1/users/login/'
-  private CLIENTE_URL ='https://vejalocal.com.br/api19/wp-json/admin/v1/users/codes?'
-  private CUPOM_URL = 'https://vejalocal.com.br/api19/wp-json/admin/v1/users/cupom'
+  private API_URL = 'https://cidadelocal.com.br/api19/wp-json/admin/v1/users/login/'
+  private CLIENTE_URL ='https://cidadelocal.com.br/api19/wp-json/admin/v1/users/codes?'
+  private CUPOM_URL = 'https://cidadelocal.com.br/api19/wp-json/admin/v1/users/cupom'
   constructor(public http: Http) {
 
   }
@@ -52,7 +52,7 @@ login(username: String, password: String,lang:String) : Observable<any[]>{
  }
 
  getSegmento():Observable<any[]>{
-  let url = 'https://vejalocal.com.br/api19/wp-json/admin/v1/users/codes?segments=all';
+  let url = 'https://cidadelocal.com.br/api19/wp-json/admin/v1/users/codes?segments=all';
   return this.http.get(url).map((resp:Response)=> resp.json());
  }
  forgotpass(email: String) : Observable<any[]>{

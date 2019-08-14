@@ -138,7 +138,7 @@ removerFavorito(id_serv) {
      console.log("card",code);
    }
 
-  this.socialSharing.share(this.visite_code+"->", "Share subject",card, "https://vejalocal.com.br/card?code="+code).then(() => {
+  this.socialSharing.share(this.visite_code+"->", "Share subject",card, "https://cidadelocal.com.br/card?code="+code).then(() => {
     console.log("shareSheetShare: Success");
   }).catch(() => {
     console.error("shareSheetShare: failed");

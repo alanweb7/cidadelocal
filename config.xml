@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="br.com.cidadelocal" version="07.7.07" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="br.com.cidadelocal" version="07.7.08" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Cidade Local - Guia Comercial</name>
     <description>Tudo ao alcance das mãos.</description>
     <author email="contato@cidadelocal.com.br" href="http://cidadelocal.com.br/">Cidade Local</author>
@@ -116,7 +116,7 @@
     <plugin name="ionic-plugin-deeplinks" spec="^1.0.17">
         <variable name="URL_SCHEME" value="vejalocal" />
         <variable name="DEEPLINK_SCHEME" value="https" />
-        <variable name="DEEPLINK_HOST" value="vejalocal.com.br" />
+        <variable name="DEEPLINK_HOST" value="cidadelocal.com.br" />
         <variable name="ANDROID_PATH_PREFIX" value="/" />
     </plugin>
     <plugin name="cordova-plugin-geolocation" spec="^4.0.1">

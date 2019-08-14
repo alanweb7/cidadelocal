@@ -410,6 +410,9 @@ private _initialiseTranslation() : void
     this.navCtrl.push('ImageCodePage',{imagens:this.imagens,token:this.token,code:this.id_code,package_imagens:this.package_imagens,package_name:this.package_name,lang:this.lang});
 
   }
+  ShowLocal(){
+    this.navCtrl.push('LocalidadePage',{imagens:this.imagens,token:this.token,id_ads:this.id_code,package_imagens:this.package_imagens,package_name:this.package_name,lang:this.lang});
+  }
   ShowDoc(){
     this.navCtrl.push('DocumentoCodePage',{docs:this.docs,token:this.token,code:this.id_code,load_aguarde:this.load_aguarde,btn_cancelar:this.btn_cancelar,btn_excluir:this.btn_excluir,btn_publicar:this.btn_publicar,page:this.page_doc,msg_exlcuir:this.msg_exlcuir,load_enviando:this.load_enviando,msg_servidor:this.msg_servidor,aviso:this.aviso,arq_msg:this.arq_msg,arq_invalido:this.arq_invalido,lang:this.lang});
 
@@ -471,7 +474,7 @@ private _initialiseTranslation() : void
   }
   // compartilhar social share
 shareSheetShare() {
-  this.socialSharing.share(this.visite_code+"->", "Share subject", this.card, "https://vejalocal.com.br/card?code="+this.slug).then(() => {
+  this.socialSharing.share(this.visite_code+"->", "Share subject", this.card, "https://cidadelocal.com.br/card?code="+this.slug).then(() => {
     console.log("shareSheetShare: Success");
   }).catch(() => {
     console.error("shareSheetShare: failed");

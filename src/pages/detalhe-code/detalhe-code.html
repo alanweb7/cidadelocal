@@ -20,10 +20,7 @@
     <div  style="margin-bottom: 20%;">
       <ion-grid>
           <ion-row>
-              <ion-col col-12 class="info-servico">
-                  <h2>{{titulo}}</h2>
-              </ion-col>
-              <ion-col col-12 class="info-servico" *ngIf="mostra">
+              <ion-col col-12 class="info-servico" *ngIf="mostra" no-padding>
                  <div  style="background: black;">
                       <div *ngIf="video_post_status == 'complete'">
                               <iframe width="100%"
@@ -53,6 +50,9 @@
                            </div>
                        </div>
                   </div>
+                  <ion-col col-12 class="info-servico">
+                      <h2>{{titulo}}</h2>
+                  </ion-col>
               </ion-col>
               <ion-col col-12 *ngIf="audioContent">
                   <ion-list>

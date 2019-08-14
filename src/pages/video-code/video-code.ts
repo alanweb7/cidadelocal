@@ -587,7 +587,7 @@ onUploadFTP():void{
   if(this.isConvertido == 1){
 
          this.util.showLoading("Enviando...");
-            this.fTP.connect('ftp.vejalocal.com.br', 'carolx54@vejalocal.com.br', 'carolx2018')
+            this.fTP.connect('ftp.cidadelocal.com.br', 'carolx54@cidadelocal.com.br', 'carolx2018')
             .then((res: any) =>{
               console.log("conexão iniciada");
               //let
