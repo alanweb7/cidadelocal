@@ -23,6 +23,7 @@ export class LocalidadePage {
   public forCities;
   public id_ads;
   public token;
+  disabeButton;
 
   constructor(
     public navCtrl: NavController,
@@ -41,6 +42,8 @@ export class LocalidadePage {
     console.log('ionViewDidLoad LocalidadePage');
   }
   locationData() {
+    this.disabeButton = true;
+    this.util.showLoading('Aguarde...');
     // var data_EXEMPLO = {
     //   id: id_code,
     //   bloco :1,
@@ -79,10 +82,16 @@ export class LocalidadePage {
     this.codeProvider.setMultiData(data)
     .then((result) =>{
 
+      this.util.loading.dismiss();
+      this.disabeButton = false;
       console.log('Response do servidor em locationData::', result);
 
     })
-    .catch(error =>{ return error;});
+    .catch(error =>{
+      this.util.loading.dismiss();
+      this.disabeButton = false;
+      return error;
+    });
   }
 
   getinfoManager(){

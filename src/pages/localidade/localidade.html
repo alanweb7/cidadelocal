@@ -38,7 +38,7 @@
                 <ion-input placeholder="Conj. das Margaridas, Alameda 17, n 124" [(ngModel)]="detalhesLocal.endereco" name="endereco"></ion-input>
               </ion-item>
               <ion-input type="hidden" value="id_ads"></ion-input>
-              <button ion-button type="submit update_data" full>Atualizar dados</button>
+              <button ion-button type="submit update_data" full [disabled]="disabeButton">Atualizar dados</button>
           </form>
 
 </div>

@@ -85,6 +85,7 @@
     "cordova-plugin-media": "5.0.2",
     "cordova-plugin-media-capture": "^3.0.2",
     "cordova-plugin-nativeaudio": "3.0.9",
+    "cordova-plugin-nativestorage": "^2.3.2",
     "cordova-plugin-network-information": "^2.0.1",
     "cordova-plugin-splashscreen": "^5.0.2",
     "cordova-plugin-statusbar": "^2.4.2",
@@ -109,7 +110,7 @@
     "zone.js": "0.8.26"
   },
   "devDependencies": {
-    "@ionic/app-scripts": "3.2.1",
+    "@ionic/app-scripts": "^3.2.4",
     "@ionic/lab": "2.0.6",
     "typescript": "~2.6.2"
   },
@@ -159,7 +160,8 @@
       "cordova-plugin-media": {},
       "cordova-plugin-nativeaudio": {},
       "call-number": {},
-      "cordova-plugin-app-version": {}
+      "cordova-plugin-app-version": {},
+      "cordova-plugin-nativestorage": {}
     },
     "platforms": [
       "ios",

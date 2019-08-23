@@ -22,6 +22,14 @@ import { ClienteProvider } from '../../providers/cliente/cliente';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { UtilService } from '../../providers/util/util.service';
 import { Message } from '@angular/compiler/src/i18n/i18n_ast';
+
+// importando arquivos da session
+//importação do arquivo criado a cima
+import { Session, Multidata } from '../../providers/session/session';
+
+//importação do arquivo usuario criado a cima
+import { User, mData } from '../../models/usuario-model';
+
 @IonicPage({
   priority : 'high'
 })@Component({
@@ -30,7 +38,12 @@ import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 })
 export class HomePage {
 // novas funcoes da home
+
+user: User;
+
 private categories: any;
+private atualVCat: number;
+private vCatAPI: number;
 private show_part: any;
 private topCategories: any;
 private currentStyles: any;
@@ -165,6 +178,8 @@ trans={
     public network : Network,
     private deeplinks      : Deeplinks,
     private usuario        : UsuarioService,
+    public session: Session,
+    public multidata: Multidata,
     private cli_Provider    : ClienteProvider ,
     private keyboard       : Keyboard,
     public modalCtrl       : ModalController,
@@ -180,27 +195,8 @@ trans={
   ) {
 
     // novas funcoes da home
-    this.getAllCat();
-
-    this.events.subscribe('my-message', (data) =>{
-      console.log(data); // 👋 Hello from page1!
-      this.home_Message =  data;
-      console.log('valor home message recebido em subscribe::', data);
-
-      if(!data){
-
-        console.log('this message: ',this.home_Message);
-        if(!this.home_Message){
-
-          console.log('home message está vazio');
-
-          this.events.publish('my-message','tem');
-
-        }
-
-      }
-    });
-
+    this.verCat();
+    this.getVersion();
 
     this.cities = [
       {
@@ -318,6 +314,59 @@ trans={
 
     }
     // novas funcoes da home page
+    getVersion(){
+
+      let token = '39<(G+xI16HyoK8$IKh>xID.Db]<zX6T:3CEp';
+      let url = this.baseUrl+"/wp-json/admin/v1/conn/getinfo";
+      let data = {
+        id: '1',
+        mode: 'version',
+      };
+      let header = {Mytoken: 'Bearer '+ token};
+
+      this.http.get(url, data, header)
+      .then(data => {
+
+          // console.log(data.status);
+          // console.log('Retorno das versoes do app::>>',data.data); // data received by server
+          // console.log(data.headers);
+
+          let response = JSON.parse(data.data);
+          this.vCatAPI = response.data.version.cat_version;
+
+          if(this.vCatAPI != this.atualVCat){
+
+            this.getAllCat();
+
+          }
+
+          let versionToApi = response.data.version.version;
+
+          if(versionToApi){
+
+            this.appVersion.getVersionNumber().then((Version)=>{
+              console.log(Version);
+              if(versionToApi > Version){
+                console.log('A versão da loja é maior');
+              }
+              if(versionToApi < Version){
+                console.log('A versão da loja é menor');
+              }
+              if(versionToApi !== Version){
+
+                this.updateApp();
+
+              }
+            });
+
+          }
+
+
+      }).catch(error =>{
+        console.log('Entrou no cath: ', error);
+      });
+
+    }
     getAllCat(){
       /**
        * Sistema de retorno de informações diversas
@@ -332,7 +381,8 @@ trans={
             mode: 'cats>citys>version',
           };
           let header = {Mytoken: 'Bearer '+ token};
-          this.http.get(url, data, header)
+
+        this.http.get(url, data, header)
         .then(data => {
 
           // console.log(data.status);
@@ -349,25 +399,11 @@ trans={
           this.topCategories = response.data.cats.top_categories;
           this.cities = response.data.citys.cidades;
           //verificar a versao do app
-          if(response.data.version){
-            let lastVersion = response.data.version;
-            this.appVersion.getVersionNumber().then((Version)=>{
-              console.log(Version);
-              if(lastVersion > Version){
-                console.log('A versão da loja é maior');
-              }
-              if(lastVersion < Version){
-                console.log('A versão da loja é menor');
-              }
-              if(lastVersion !== Version){
 
-                this.updateApp();
-
-              }
-            });
-
-          }
           this.cities = response.data.citys.cidades;
+
+          this.setCategories();
+
           console.log('Lista de Categorias: ',this.categories);
           console.log('Lista de Cidades: ',this.cities);
 
@@ -382,6 +418,7 @@ trans={
 
         });
       }
+
       openCategorie(id){
         console.log('ID da categoria buscada: ', id);
         this.todo.cat = id;
@@ -836,7 +873,7 @@ openDeeplinks(){
           {
             text: 'Atualizar',
             handler: () => {
-              let url = 'https://play.google.com/store/apps/details?id=br.com.pertodeti.guiacomercial';
+              let url = 'https://play.google.com/store/apps/details?id=br.com.cidadelocal';
               this.openThisPage(url);
             }
           }
@@ -863,6 +900,55 @@ openDeeplinks(){
           this.hiddeButton = true;
         break;
       }
+    }
+    criarSession() {
+
+      let usuariologago = new User();
+      usuariologago.nome = 'Alan Silva';
+
+      //disparando a sessão
+      this.session.create(usuariologago);
+
+    }
+
+    setCategories(){
+
+      let categories = new mData();
+      categories.currentvCat = this.vCatAPI;
+      categories.categories = this.categories;
+      categories.topCategories = this.topCategories;
+      categories.cities = this.cities;
+      //disparando a sessão
+      this.multidata.create(categories);
+
+    }
+    verCat(){
+
+      this.multidata.get()
+      .then(res => {
+          let categories = new mData(res);
+          let objectCat:any = categories;
+          console.log('Categorias Regsitradas  >>> ', categories);
+          this.atualVCat = categories.currentvCat;
+
+          // setar categorias registradas
+          console.log('Contagem das categorias existentes: ', categories.categories.length);
+          if(categories.categories.length > 0){
+            this.platform.ready().then(()=>{
+
+            this.showed_cat = true;
+            this.categories = categories.categories;
+            this.show_part = categories.topCategories;
+            this.topCategories = categories.topCategories;
+            this.cities = categories.cities;
+
+            })
+
+
+
+          }
+      });
+
     }
 
 

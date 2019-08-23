@@ -33,7 +33,7 @@
           </ion-list-header>
           <ion-list>
                   <ion-item *ngFor="let item of ads">
-                      <ion-thumbnail item-left class="thumbs-list" [ngStyle]="{'background-image': 'url(' + item.galeria[0].img_link + ')'}">
+                      <ion-thumbnail item-left class="thumbs-list" [ngStyle]="{'background-image': item.galeria.length > 0 ? 'url('+item.galeria[0].img_link+')' : 'url(./assets/imgs/no-img.jpeg)'}">
                       </ion-thumbnail>
                       <div class="list-ads-content">
                         <h2 item-title><strong>{{item.code | slice:0:40}}<span *ngIf="item.code.length > 40">...</span></strong></h2>
@@ -76,7 +76,4 @@
     </ion-grid>
 
 </div>
-
-
-
 </ion-content>

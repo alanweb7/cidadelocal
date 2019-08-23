@@ -261,7 +261,7 @@ showPassword() {
 
 //adquira seu code
 shopcode() {
-    var url = 'https://cidadelocal.com.br/pacotes/';
+    var url = 'https://vejalocal.com.br/pacotes/';
     this.browserTab.isAvailable()
     .then(isAvailable => {
       if (isAvailable) {

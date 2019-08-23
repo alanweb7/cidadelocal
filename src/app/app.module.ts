@@ -1,3 +1,4 @@
+import { Session, Multidata } from './../providers/session/session';
 import { CallNumber } from '@ionic-native/call-number';
 import { ModalDetailPage } from './../pages/modal-detail/modal-detail';
 import { Camera } from '@ionic-native/camera';
@@ -43,13 +44,17 @@ import { Media } from '@ionic-native/media';
 import { NativeAudio } from '@ionic-native/native-audio';
 
 import { AppVersion } from '@ionic-native/app-version';
+import {NotificationsComponent} from '../components/notifications/notifications';
+
+
 
 @NgModule({
   declarations: [
     MyApp,
     ModalDetailPage,
     Autosize,
-    ProgressBarComponent
+    ProgressBarComponent,
+    NotificationsComponent
 
   ],
   imports: [
@@ -73,9 +78,13 @@ import { AppVersion } from '@ionic-native/app-version';
   entryComponents: [
     MyApp,
     ModalDetailPage,
+    NotificationsComponent,
 
   ],
   providers: [
+    Multidata,
+    Session,
+    NativeStorage,
     AppVersion,
     CallNumber,
     NativeAudio,

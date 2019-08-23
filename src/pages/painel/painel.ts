@@ -18,6 +18,8 @@ import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 export class PainelPage {
   private admForm:FormGroup;
   public token;
+  sucessUser:boolean = false;
+  userData:any;
 
   constructor(
     public navCtrl: NavController,
@@ -26,8 +28,10 @@ export class PainelPage {
     public http: HTTP,
     ) {
       this.admForm = this.formBuilder.group({
+        user_name: ['', Validators.required],
         email: ['', Validators.required],
         password: [''],
+        package: [''],
       });
       this.token = this.navParams.get('token');
   }
@@ -45,9 +49,12 @@ export class PainelPage {
       Auth: 'Bearer '+this.token,
 
     }
-    this.http.post(url, this.admForm, header).then((data)=>{
+    this.http.post(url, this.admForm.value, header).then((data)=>{
 
       console.log(data.data);
+      this.sucessUser = true;
+      let userData = JSON.parse(data.data);
+      this.userData = userData.dados;
 
     }).catch((error)=>{
 

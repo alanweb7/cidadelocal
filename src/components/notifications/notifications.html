@@ -1,0 +1,19 @@
+<ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Notifications</ion-title>
+    </ion-navbar>
+  </ion-header>
+
+
+  <ion-content padding>
+
+    <h3>Welcome to Ionic Events!</h3>
+    <p>Current count = {{notification_count}}</p>
+    <p>
+      <button ion-button color="primary" (click)="publishEvent()">Add notification</button>
+    </p>
+
+  </ion-content>

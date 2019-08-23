@@ -1,4 +1,9 @@
 import { Component } from '@angular/core';
+// arquivos da session
+import { Storage } from "@ionic/storage";
+import { Session, Multidata } from './../../providers/session/session';
+import { User, mData } from '../../models/usuario-model';
+
 import { IonicPage,Navbar , NavController, NavParams,AlertController, ToastController } from 'ionic-angular';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { HistoricoService } from '../../providers/historico/historico.service';
@@ -30,6 +35,8 @@ export class HistoricoPage {
   excluir_msg ;
   visite_code ;
   lang ;
+  usuarioLogado:any;
+  categories:any;
   constructor(
     public navCtrl        : NavController,
     public navParams      : NavParams,
@@ -38,11 +45,16 @@ export class HistoricoPage {
     public toast          : ToastController,
     private socialSharing : SocialSharing,
     private geoProv       : GeolocationProvider,
-    private translate 	  : TranslateService
+    private translate 	  : TranslateService,
+
+    public session: Session,
+    public multidata: Multidata,
+    public storage: Storage
 
   ) {
 
   }
+
   ionViewDidLoad() {
     this.token   = String;
     this.token   = "";
@@ -138,7 +150,7 @@ removerFavorito(id_serv) {
      console.log("card",code);
    }
 
-  this.socialSharing.share(this.visite_code+"->", "Share subject",card, "https://cidadelocal.com.br/card?code="+code).then(() => {
+  this.socialSharing.share(this.visite_code+"->", "Share subject",card, "https://vejalocal.com.br/card?code="+code).then(() => {
     console.log("shareSheetShare: Success");
   }).catch(() => {
     console.error("shareSheetShare: failed");
@@ -165,5 +177,19 @@ private _initialiseTranslation() : void
    }, 250);
 }
 
+  userData(){
+    this.session.get()
+    .then(res => {
+        this.usuarioLogado = new User(res);
+        console.log('usuário logado  >>> ',this.usuarioLogado);
+    });
+    this.multidata.get()
+    .then(res => {
+        this.categories = new mData(res);
+        console.log('Categorias Regsitradas  >>> ',this.categories);
+    });
+
+
+  }
 
 }

@@ -18,7 +18,7 @@
 <form [formGroup]="admForm" (ngSubmit)="setNewUser()">
     <ion-item>
       <ion-label>Usuário</ion-label>
-      <ion-input type="text"  name="user_name"></ion-input>
+      <ion-input type="text" formControlName="user_name" name="user_name"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Email</ion-label>
@@ -30,9 +30,24 @@
     </ion-item>
     <ion-item>
       <ion-label>Pacote</ion-label>
-      <ion-input type="text"  name="package"></ion-input>
+      <ion-input type="text" formControlName="package" name="package"></ion-input>
     </ion-item>
     <button ion-button type="submit" [disabled]="!admForm.valid">CADASTRAR</button>
   </form>
-
+<div class="retur_data" *ngIf="sucessUser">
+<ion-list>
+  <ion-item>
+    <ion-label>{{userData.user_name}}</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>{{userData.password}}</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>{{userData.email}}</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>{{userData.package}}</ion-label>
+  </ion-item>
+</ion-list>
+</div>
 </ion-content>

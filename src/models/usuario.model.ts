@@ -2,7 +2,7 @@
 export class Usuario {
 
     public id: number;
-   
+
 
     constructor(
         public id_serv     :number,
@@ -25,7 +25,7 @@ export class Usuario {
         public usuario     :String,
         public logado      :String,
         public token       :String,
-        
+
     ) {
         this.id = new Date().getTime();
     }
